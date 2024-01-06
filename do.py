@@ -13,7 +13,7 @@ arr = []
 for i in range(2):
 
     # 페이지 반복
-    for j in range(12):
+    for j in range(11):
         # 조건부 url
         j += 1
         market_cap_res = requests.get(f'https://finance.naver.com/sise/sise_market_sum.naver?sosok={i}&page={j}', headers=headers)
