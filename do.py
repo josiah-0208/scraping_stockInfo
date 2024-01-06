@@ -7,7 +7,7 @@ headers = {'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'}
 
 # response = requests.get(base_url, headers=headers)
 # soup = BeautifulSoup(response.text, 'html.parser')
-d
+
 arr = []
 # 코스피 & 코스닥 반복
 for i in range(2):
