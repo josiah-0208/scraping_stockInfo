@@ -1,7 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 # 정규표현식
-import re 
+import re
+import json
 
 # base_url = 'https://finance.naver.com/sise/sise_market_sum.naver?sosok=0'
 headers = {'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'}
@@ -12,6 +13,7 @@ headers = {'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'}
 # soup = BeautifulSoup(response.text, 'html.parser')
 
 arr = []
+result_dict = {}
 # 코스피 & 코스닥 반복
 for i in range(2):
     # 페이지 반복
@@ -39,25 +41,45 @@ for i in range(2):
 
 for code in arr:
     page = 1
-    detail_res = requests.get(f'https://finance.naver.com/item/board.naver?code={code}&page={page}', headers=headers)
-    soup = BeautifulSoup(detail_res.text, 'html.parser')
-    title = soup.select_one('dt > strong').text
-    title_td_tags = soup.find_all('td', class_="title")
-    print(title)
-    for td in title_td_tags:
-        img_tag = td.select_one('a > img')
-        if img_tag:
+    while True:
+        detail_res = requests.get(f'https://finance.naver.com/item/board.naver?code={code}&page={page}', headers=headers)
+        soup = BeautifulSoup(detail_res.text, 'html.parser')
+        stock_title = soup.select_one('dt > strong').text
+        stock_title_comments = []
+        title_td_tags = soup.find_all('td', class_="title")
+        page_empty = False
+        for td in title_td_tags:
+            img_tag = td.select_one('a > img')
+            if not img_tag:
+                page_empty = True
+                break
             a_tag = td.find('a')
             nid = re.search(r'nid=(\d+)',a_tag['href']).group(1)
             content_res = requests.get(f'https://finance.naver.com/item/board_read.naver?code={code}&nid={nid}', headers=headers)
             soup = BeautifulSoup(content_res.text, 'html.parser')
+            title_content = soup.find('strong', class_='p15').text
             content = soup.select_one('#body').text
-            print(td.text, content)
+            likes = soup.find('strong', class_='_goodCnt').text
+            dislikes = soup.find('strong', class_='_badCnt').text
+            comments_tag = soup.find_all('span', class_='u_cbox_contents')
+            comments = []
+            if comments_tag:
+                for tag in comments_tag:
+                    comments.append(tag.text)
+            stock_title_comments.append({'글제목': title_content, '글내용': content, '공감': likes, '비공감': dislikes, '댓글': comments})
+        result_dict[stock_title] = stock_title_comments
+        if page_empty:
+            break
+        page += 1
 
+
+
+with open('./result.json','w', encoding='utf-8') as f:
+  json.dump(result_dict, f, ensure_ascii=False, indent=2)
 
         
 
-
+# 종목명, 타이틀, 내용, 공감, 비공감, 댓글
 # f'https://finance.naver.com/sise/sise_market_sum.naver?sosok={0}'
 # for category in sosok1
 # for page in page 쭉
