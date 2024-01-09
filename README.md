@@ -8,8 +8,17 @@ https://tglv.tistory.com/50
 https://tglv.tistory.com/50 network url 보는 방법
 https://tglv.tistory.com/53 정규식
 
+파이썬 요청 시간 보고,
 댓글 안나오는 이유 보고,
 리액트 앱에서 json 목업 데이터 참조해서
+
+가공하고 쏠까, 쏘면서 필터로 가공할까 연산량은 후자가 더 많지만, 로직이 화면으로 간다.
+가공 요소
+제목과 && 본문이 3글자 미만이면 없애고, 루프 빠져나오고
+댓글도 3글자 미만이면 루프 빠져나오고
+or
+해당 문자열이 제목, 본문, 댓글에 포함되어 있으면 전체 가져오기?
+
 useEffect 안에서 화면 룰에 맞게 쏴주는데 필터링 배열에 포함되는지 확인
 let originalArray = ["apple", "banana", "cherry", "date", "elderberry"];
 let filterArray = ["banana", "date"];
@@ -17,3 +26,23 @@ let filterArray = ["banana", "date"];
 let filteredArray = originalArray.filter(item => filterArray.includes(item));
 
 console.log(filteredArray); // Output: ["banana", "date"]
+
+그다음에 얻어진 객체를 jsx 안에서 for in과 map 반복문을 돌리자
+서버를 킨 상태에서 localhost로 접근
+
+전역 스타일 적용하고,
+BG#262626, P#AA540, T#F7F7F7
+P#F19 E54
+글꼴은 종목명 25 제목 본문 21 댓글 18 좋아요 싫어요 16
+70퍼센트 중앙정렬
+라인헤이트 140 ~ 160
+바디 100 100 플렉스 중앙정렬 
+컨테이너 너비 75퍼
+
+
+종목명
+제목 본문 좋아요 싫어요
+    댓글
+    댓글
+
+최종적으로 파이썬 모듈화 코드정리 진행
