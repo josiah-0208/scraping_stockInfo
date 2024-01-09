@@ -7,6 +7,8 @@ https://tglv.tistory.com/50
 셀레니움은 동작이 들어가기 때문이다.
 https://tglv.tistory.com/50 network url 보는 방법
 https://tglv.tistory.com/53 정규식
+https://moons-rainbow.tistory.com/30
+https://tibetsandfox.tistory.com/20 파이썬 '\_'의 의미
 
 파이썬 요청 시간 보고,
 댓글 안나오는 이유 보고,
@@ -36,13 +38,12 @@ P#F19 E54
 글꼴은 종목명 25 제목 본문 21 댓글 18 좋아요 싫어요 16
 70퍼센트 중앙정렬
 라인헤이트 140 ~ 160
-바디 100 100 플렉스 중앙정렬 
+바디 100 100 플렉스 중앙정렬
 컨테이너 너비 75퍼
-
 
 종목명
 제목 본문 좋아요 싫어요
-    댓글
-    댓글
+댓글
+댓글
 
 최종적으로 파이썬 모듈화 코드정리 진행

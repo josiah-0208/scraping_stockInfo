@@ -3,7 +3,9 @@ from bs4 import BeautifulSoup
 # 정규표현식
 import re
 import json
+import time
 
+start = time.time()
 # base_url = 'https://finance.naver.com/sise/sise_market_sum.naver?sosok=0'
 headers = {'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'}
 # headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'}
@@ -17,7 +19,7 @@ result_dict = {}
 # 코스피 & 코스닥 반복
 for i in range(2):
     # 페이지 반복
-    for j in range(1):
+    for j in range(12):
         # 조건부 url
         j += 1
         market_cap_res = requests.get(f'https://finance.naver.com/sise/field_submit.naver?menu=market_sum&returnUrl=http%3A%2F%2Ffinance.naver.com%2Fsise%2Fsise_market_sum.naver%3Fsosok%3D{i}%26page%3D{j}%26fieldIds%3Damount%26fieldIds%3Dmarket_sum%26fieldIds%3Dper&fieldIds=amount&fieldIds=market_sum&fieldIds=per', headers=headers)
@@ -45,6 +47,7 @@ for code in arr:
         detail_res = requests.get(f'https://finance.naver.com/item/board.naver?code={code}&page={page}', headers=headers)
         soup = BeautifulSoup(detail_res.text, 'html.parser')
         stock_title = soup.select_one('dt > strong').text
+        print(stock_title)
         stock_title_comments = []
         title_td_tags = soup.find_all('td', class_="title")
         page_empty = False
@@ -61,12 +64,12 @@ for code in arr:
             content = soup.select_one('#body').text
             likes = soup.find('strong', class_='_goodCnt').text
             dislikes = soup.find('strong', class_='_badCnt').text
-            comments_tag = soup.find_all('span', class_='u_cbox_contents')
-            comments = []
-            if comments_tag:
-                for tag in comments_tag:
-                    comments.append(tag.text)
-            stock_title_comments.append({'글제목': title_content, '글내용': content, '공감': likes, '비공감': dislikes, '댓글': comments})
+            # comments_tag = soup.select_one('#cbox_module > div > div.u_cbox_content_wrap')
+            # comments = []
+            # if comments_tag:
+            #     for tag in comments_tag:
+            #         comments.append(tag.text)
+            stock_title_comments.append({'글제목': title_content, '글내용': content, '공감': likes, '비공감': dislikes})
         result_dict[stock_title] = stock_title_comments
         if page_empty:
             break
@@ -77,7 +80,7 @@ for code in arr:
 with open('./result.json','w', encoding='utf-8') as f:
   json.dump(result_dict, f, ensure_ascii=False, indent=2)
 
-        
+print(f'{time.time()-start:.4f} sec 걸렸어요.')
 
 # 종목명, 타이틀, 내용, 공감, 비공감, 댓글
 # f'https://finance.naver.com/sise/sise_market_sum.naver?sosok={0}'
