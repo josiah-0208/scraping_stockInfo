@@ -7,3 +7,13 @@ https://tglv.tistory.com/50
 셀레니움은 동작이 들어가기 때문이다.
 https://tglv.tistory.com/50 network url 보는 방법
 https://tglv.tistory.com/53 정규식
+
+댓글 안나오는 이유 보고,
+리액트 앱에서 json 목업 데이터 참조해서
+useEffect 안에서 화면 룰에 맞게 쏴주는데 필터링 배열에 포함되는지 확인
+let originalArray = ["apple", "banana", "cherry", "date", "elderberry"];
+let filterArray = ["banana", "date"];
+
+let filteredArray = originalArray.filter(item => filterArray.includes(item));
+
+console.log(filteredArray); // Output: ["banana", "date"]
