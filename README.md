@@ -2,12 +2,26 @@
 GPT는 짱
 https://tglv.tistory.com/50
 
+0. 서론 - 어떤 기술인지, 이유, 사용 기술, 
+
+2. selenium vs beautifulsoup
+
+3. 헤더에 user agent - 속도와도 관련이 있다.
+
+4. api를 뚫을 것인가, cra를 사용한 이유 결국 excel이 아닌 localhost로 접근하기로 했다.
+
+5. 결국 selenium을 써야한다. 네트워크
+
+6. 시간이 너무 많이 걸린다. - 코스피, 코스닥으로 나눠서 데스크탑 2개로 돌릴지, 병렬처리를 할지
+
+7. 참조사이트
+
 요청 헤더에 user agent 속성이 들어가야 한다.
 셀레니움보다 requests가 속도적으로 빠르다.
 셀레니움은 동작이 들어가기 때문이다.
 https://tglv.tistory.com/50 network url 보는 방법
 https://tglv.tistory.com/53 정규식
-https://moons-rainbow.tistory.com/30
+https://moons-rainbow.tistory.com/30 모듈화 
 https://tibetsandfox.tistory.com/20 파이썬 '\_'의 의미
 
 파이썬 요청 시간 보고,
@@ -47,3 +61,9 @@ P#F19 E54
 댓글
 
 최종적으로 파이썬 모듈화 코드정리 진행
+
+댓글은 모듈을 불러오기 때문에 selenium을 써야한다.
+https://ecofriendlyapplesu.tistory.com/10
+https://twoicefish-secu.tistory.com/375
+https://bjwan-career.tistory.com/129
+병렬처리 
