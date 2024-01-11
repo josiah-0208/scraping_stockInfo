@@ -2,46 +2,58 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import resultJson from './result.json';
 
+// 키 배열 먼저 추출, 오브젝트에 키 배열 돌려서, 빈 배열 빼고,
 function App() {
   const [resultObj, setResultObj] = useState({});
   const [keyArr, setKeyArr] = useState([]);
   useEffect(() => {
     const parsedJson = JSON.parse(JSON.stringify(resultJson));
-    console.log(parsedJson);
-    setResultObj(parsedJson);
-    setKeyArr(Object.keys(parsedJson));
-    console.log(parsedJson['펄어비스']);
+    const newJson = {};
+    Object.keys(parsedJson).map((key) => {
+      if (parsedJson[key].length > 0) {
+        newJson[key] = [];
+        parsedJson[key].map((commentObj) => {
+          if (
+            filterKeywords.some((keyword) =>
+              commentObj?.글제목.includes(keyword)
+            ) ||
+            filterKeywords.some((keyword) =>
+              commentObj?.글내용.includes(keyword)
+            )
+          ) {
+            newJson[key].push(commentObj);
+          }
+        });
+        if (newJson[key].length === 0) {
+          delete newJson[key];
+        }
+      }
+    });
+    console.log(newJson);
+    setResultObj(newJson);
+    setKeyArr(Object.keys(newJson));
   }, []);
   return (
-    <div className="App">
-      {keyArr.map((key) => {
-        return (
-          <div>
-            <div>{key}</div>
-            -----------------------------------
-            {resultJson[key].map((comment) =>
-              filterKeywords.some((keyword) =>
-                comment?.글제목.includes(keyword)
-              ) &&
-              filterKeywords.some((keyword) =>
-                comment?.글내용.includes(keyword)
-              ) ? (
-                <>
-                  <div>
-                    <span>
-                      <b>{comment?.글제목}</b>
-                    </span>
-                    <span>{comment?.글내용}</span>
-                    <span>{comment?.공감}</span>
-                    <span>{comment?.비공감}</span>
-                  </div>
-                  <br />
-                </>
-              ) : null
-            )}
+    <div className="container">
+      {keyArr.map((key) => (
+        <div className="container_stock">
+          <div className="title">{key}</div>
+          <div className="container_comments">
+            {resultObj[key].map((comment) => (
+              <div className="container_comment">
+                <div className="top_comment">
+                  <span className="text title_comment">
+                    <b>{comment?.글제목}</b>
+                  </span>
+                  <span className="text like">{comment?.공감}</span>
+                  <span className="text dislike">{comment?.비공감}</span>
+                </div>
+                <span className="text content">{comment?.글내용}</span>
+              </div>
+            ))}
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   );
 }
@@ -49,6 +61,7 @@ function App() {
 export default App;
 
 const filterKeywords = [
+  '헬로우',
   '구글',
   '애플',
   '테슬라',
@@ -164,4 +177,6 @@ const filterKeywords = [
   '체결',
   '자사주',
   '소각',
+  '가능',
+  '결정',
 ];

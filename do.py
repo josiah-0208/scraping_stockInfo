@@ -17,12 +17,12 @@ headers = {'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'}
 arr = []
 result_dict = {}
 # 코스피 & 코스닥 반복
-for i in range(2):
+for i in range(1):
     # 페이지 반복
-    for j in range(12):
+    for j in range(1):
         # 조건부 url
         j += 1
-        market_cap_res = requests.get(f'https://finance.naver.com/sise/field_submit.naver?menu=market_sum&returnUrl=http%3A%2F%2Ffinance.naver.com%2Fsise%2Fsise_market_sum.naver%3Fsosok%3D{i}%26page%3D{j}%26fieldIds%3Damount%26fieldIds%3Dmarket_sum%26fieldIds%3Dper&fieldIds=amount&fieldIds=market_sum&fieldIds=per', headers=headers)
+        market_cap_res = requests.get(f'https://finance.naver.com/sise/field_submit.naver?menu=market_sum&returnUrl=http%3A%2F%2Ffinance.naver.com%2Fsise%2Fsise_market_sum.naver%3Fsosok%3D{0}%26page%3D{7}%26fieldIds%3Damount%26fieldIds%3Dmarket_sum%26fieldIds%3Dper&fieldIds=amount&fieldIds=market_sum&fieldIds=per', headers=headers)
         soup = BeautifulSoup(market_cap_res.text, 'html.parser')
         # 시가총액 리스트를 뽑는다.
         market_cap_tags = soup.select('tr > td:nth-child(8)')
@@ -48,6 +48,8 @@ for code in arr:
         soup = BeautifulSoup(detail_res.text, 'html.parser')
         stock_title = soup.select_one('dt > strong').text
         print(stock_title)
+        if stock_title == '엔씨소프트':
+            break
         stock_title_comments = []
         title_td_tags = soup.find_all('td', class_="title")
         page_empty = False
