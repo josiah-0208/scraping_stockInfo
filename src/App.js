@@ -179,4 +179,5 @@ const filterKeywords = [
   '소각',
   '가능',
   '결정',
+  '합병',
 ];
