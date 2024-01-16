@@ -6,7 +6,7 @@ import re
 import json
 import time
 
-def get_comments(code, page):
+def get_comments(code, page, result):
     result = {}
     detail_res = requests.get(f'https://finance.naver.com/item/board.naver?code={code}&page={page}', headers=headers)
     soup = BeautifulSoup(detail_res.text, 'html.parser')
@@ -73,7 +73,7 @@ for i in range(2):
 
 
 with ThreadPoolExecutor() as executor:
-    futures = [executor.submit(get_comments, code, 1) for code in arr]
+    futures = [executor.submit(get_comments, code, 1, result_dict) for code in arr]
 
 for future in futures:
     result = future.result()
