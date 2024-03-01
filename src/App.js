@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import resultJson from './result.json';
 
-// 키 배열 먼저 추출, 오브젝트에 키 배열 돌려서, 빈 배열 빼고,
 function App() {
   const [resultObj, setResultObj] = useState({});
   const [keyArr, setKeyArr] = useState([]);
@@ -10,7 +9,7 @@ function App() {
     const parsedJson = JSON.parse(JSON.stringify(resultJson));
     const newJson = {};
     Object.keys(parsedJson).map((key) => {
-      if (parsedJson[key].length > 0) {
+      if (parsedJson[key].length > 0 && parsedJson[key].length < 20) {
         newJson[key] = [];
         parsedJson[key].map((commentObj) => {
           if (
@@ -61,7 +60,6 @@ function App() {
 export default App;
 
 const filterKeywords = [
-  '헬로우',
   '구글',
   '애플',
   '테슬라',

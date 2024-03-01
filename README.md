@@ -1,32 +1,45 @@
-번뜩이는 아이디어를 기반으로, 실사용을 위한 스크래핑 프로그램을 짰습니다.
-GPT는 짱
+목적 : 제테크에 관심이 많던 중 좋은 보조지표에 대한 아이디어가 떠올랐고, 이를 GPT-4의 도움을 얻어 싶었다.
+즉 필요에 의한 개발이었다. 지금은 사용하지 않지만,,,ㅎ
+
+기술 : GPT-4, 파이썬, beautifulsoup, CRA(이제는 죽은)
+
+TASKS :
+
+- Selenium 인가, BeautifulSoup인가
+  beautifulsoup이다. selenium은 실제로 동작을 하는 더 정교한 작업에 적합한 대신 처리 시간이 길다.
+  셀레니움은 처리 과정에 실제 동작이 들어가기 때문이다.
+
+- 헤더
+  스크래핑이란게 요청이 많고, 처리해주는 입장에서 막아놨다.
+  헤더에 특정 깔끔하게 처리된다. 교육목적이 아니라면, 지양하는게,,
+
+- 파이썬 처리와 리액트
+  어디서 많은 데이터를 가공할 것인가. 답은 브라우저와 나눴다.
+
+- 최종병기 병렬처리
+
+언어라는게 결국, 비슷하기 때문에 파이썬을 익히지 않고서도 파이썬을 이용하여
+
+결론은 GPT는 짱
 https://tglv.tistory.com/50
 
-0. 서론 - 어떤 기술인지, 이유, 사용 기술,
+1. 서론 - 어떤 기술인지, 이유, 사용 기술,
 
-1. selenium vs beautifulsoup
+2. selenium vs beautifulsoup
 
-2. 헤더에 user agent - 속도와도 관련이 있다.
+3. 헤더에 user agent - 속도와도 관련이 있다.
 
-3. api를 뚫을 것인가, cra를 사용한 이유 결국 excel이 아닌 localhost로 접근하기로 했다.
+4. api를 뚫을 것인가, cra를 사용한 이유 결국 excel이 아닌 localhost로 접근하기로 했다.
 
-4. 결국 selenium을 써야한다. 네트워크
+5. 결국 selenium을 써야한다. 네트워크
 
-5. 시간이 너무 많이 걸린다. - 코스피, 코스닥으로 나눠서 데스크탑 2개로 돌릴지, 병렬처리를 할지
+6. 시간이 너무 많이 걸린다. - 코스피, 코스닥으로 나눠서 데스크탑 2개로 돌릴지, 병렬처리를 할지
 
-6. 참조사이트
-
-요청 헤더에 user agent 속성이 들어가야 한다.
-셀레니움보다 requests가 속도적으로 빠르다.
-셀레니움은 동작이 들어가기 때문이다.
-https://tglv.tistory.com/50 network url 보는 방법
-https://tglv.tistory.com/53 정규식
-https://moons-rainbow.tistory.com/30 모듈화
-https://tibetsandfox.tistory.com/20 파이썬 '\_'의 의미
-
-파이썬 요청 시간 보고,
-댓글 안나오는 이유 보고,
-리액트 앱에서 json 목업 데이터 참조해서
+7. 참조사이트
+   https://tglv.tistory.com/50 network url 보는 방법
+   https://tglv.tistory.com/53 정규식
+   https://moons-rainbow.tistory.com/30 모듈화
+   https://tibetsandfox.tistory.com/20 파이썬 '\_'의 의미
 
 가공하고 쏠까, 쏘면서 필터로 가공할까 연산량은 후자가 더 많지만, 로직이 화면으로 간다.
 가공 요소
