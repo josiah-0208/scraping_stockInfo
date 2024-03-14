@@ -1,4 +1,4 @@
-목적 : 제테크에 관심이 많아 원하는 자료를 스크래핑하고 싶었고, 전적으로 GPT-4의 도움으로 개발하였다
+목적 : 제테크에 관심이 많아 원하는 자료를 스크래핑하고 싶었고, 전적으로 GPT-4의 도움으로 개발하였다.  
 필요에 의한 개발이었지만, 지금은 사용하지 않는다,,,ㅎ
 
 사용 기술 : GPT-4, 파이썬, beautifulsoup, CRA(-이제는 죽은-)
@@ -24,16 +24,17 @@
   댓글은 페이지 파싱 후에 모듈을 불러오기 때문에 selenium을 써야했다.
   결국에는 가능하겠지만, 필요도가 낮아 패스!
 
-종합적인 결론은 - GPT-4 짱이다. 언어야 비슷하겠지만, 파이썬에 대해 전혀 몰라도 단기간에 프로그램 작성이 가능했다.  
+종합적인 결론은,  
+GPT-4 짱이다. 언어야 비슷하겠지만, 파이썬에 대해 전혀 몰라도 단기간에 프로그램 작성이 가능했다.  
 이제는 gpt가 능률인 것 같다. 이게 더 다듬어진다면 훌륭한 감독자가 되어야할 것 같은데,,,
 
-1. 참조사이트
-   https://tglv.tistory.com/50 network url 보는 방법
-   https://tglv.tistory.com/53 정규식
-   https://moons-rainbow.tistory.com/30 모듈화
-   https://tibetsandfox.tistory.com/20 파이썬 '\_'의 의미
-   https://tglv.tistory.com/50
-   병렬처리
-   https://ecofriendlyapplesu.tistory.com/10
-   https://twoicefish-secu.tistory.com/375
-   https://bjwan-career.tistory.com/129
+1. 참조사이트  
+   https://tglv.tistory.com/50 network url 보는 방법  
+   https://tglv.tistory.com/53 정규식  
+   https://moons-rainbow.tistory.com/30 모듈화  
+   https://tibetsandfox.tistory.com/20 파이썬 '\_'의 의미  
+   https://tglv.tistory.com/50  
+   병렬처리  
+   https://ecofriendlyapplesu.tistory.com/10  
+   https://twoicefish-secu.tistory.com/375  
+   https://bjwan-career.tistory.com/129  
